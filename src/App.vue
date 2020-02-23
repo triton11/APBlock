@@ -9,10 +9,17 @@
             </router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link :to="{ path: 'instructions' }">
+            <router-link :to="{ path: '/instructions' }">
               Instructions
             </router-link>
           </b-nav-item>
+          <b-nav-item-dropdown text="physics">
+            <b-dropdown-item>
+              <router-link :to="{ path: '/physics/ball_bounce' }">
+                Ball Bounce
+              </router-link>
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-navbar>
       <div id="main">

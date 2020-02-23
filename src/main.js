@@ -4,6 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import One from './components/instructions/One.vue'
 import Home from './components/Home.vue'
+import BallBounce from './components/physics/ball_bounce.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -27,11 +28,17 @@ const router = new Router({
      component: Home
     },
     {
-     path: '/instructions',
+      path: '/instructions',
      name:'one',
      component: One,
      props:true,
-   },
+    },
+    {
+     path: '/physics/ball_bounce',
+     name:'ball_bounce',
+     component: BallBounce,
+     props:true,
+    },
  ]
 })
 

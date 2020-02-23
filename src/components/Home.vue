@@ -1,37 +1,20 @@
 <template>
   <div>
     <h1>Welcome to AP Block</h1>
-    <BlocklyComponent id="blockly1" ref="foo">
-      <block type="controls_ifelse"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="controls_repeat_ext">
-          <value name="TIMES">
-              <shadow type="math_number">
-                  <field name="NUM">10</field>
-              </shadow>
-          </value>
-      </block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-      <block type="logic_null" disabled="true"></block>
-      <block type="logic_ternary"></block>
-      <block type="text_charAt">
-          <value name="VALUE">
-              <block type="variables_get">
-                  <field name="VAR">text</field>
-              </block>
-          </value>
-      </block>
-      <block type="text"></block>
-      <block type="text_length"></block>
-      <block type="text_print"></block>
-      <block type="math_number"></block>
-    </BlocklyComponent>
-    <p id="code">
-      <button v-on:click="evalCode()">Run Code</button>
-    </p>
+    <h2> {{greeting}}, {{name}} </h2>
+    <div class="row">
+      <div class="col-8">
+        <BlocklyComponent id="blockly1" ref="foo">
+          <block type="set_greeting"></block>
+          <block type="set_name"></block>
+        </BlocklyComponent>
+      </div>
+      <div>
+        <p id="code">
+          <b-button size="lg" variant="primary" v-on:click="evalCode()">Run Code</b-button>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,6 +22,8 @@
 import BlocklyComponent from './BlocklyComponent.vue'
 
 import BlocklyJS from 'blockly/javascript';
+import './blockcomponents/print';
+import './blockcomponents/set_greeting';
 
 export default {
   name: 'app',
@@ -48,10 +33,16 @@ export default {
   data(){
     return {
       code: '',
+      greeting: "Greeting",
+      name: "Name"
     }
   },
   methods: {
+    
     evalCode() {
+      // function parse(str) {
+      //   return Function(`'use strict'; return (${str})`)()
+      // }
       this.code = BlocklyJS.workspaceToCode(this.$refs["foo"].workspace);
       try {
         eval(this.code);
@@ -81,6 +72,9 @@ html, body {
 #blockly2 {
   position: relative;
   width: 100%;
+  height: 500px;
+}
+#monitor {
   height: 500px;
 }
 </style>
