@@ -29,7 +29,7 @@ Blockly.Blocks['set_variable'] = {
 Blockly.JavaScript['set_variable'] = function(block) {
   var dropdown_my_variable = block.getFieldValue('my_variable');
   var value_my_value = Blockly.JavaScript.valueToCode(block, 'my_value', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `this.${dropdown_my_variable} = ${value_my_value};\n`;
+  var code = `this.${dropdown_my_variable} = ${value_my_value};`;
   return code;
 };
 
@@ -56,7 +56,7 @@ Blockly.Blocks['get_variable'] = {
 
 Blockly.JavaScript['get_variable'] = function(block) {
   var dropdown_my_variable = block.getFieldValue('my_variable');
-  var code = `this.${dropdown_my_variable}`;
+  var code = `this.${dropdown_my_variable};`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -75,7 +75,7 @@ Blockly.Blocks['draw_ball'] = {
 
 Blockly.JavaScript['draw_ball'] = function(block) {
   block
-  var code = 'this.drawBall();';
+  var code = 'draw();';
   return code;
 };
 
