@@ -16,11 +16,11 @@
         </BlocklyComponent>
       </div>
       <div class="col-4">
-        <h4>Time elapsed: {{timer / 10}}</h4>
+        <h4>Time elapsed: {{currentTime}}</h4>
         <canvas id="myCanvas" width="400" height="400">
         </canvas>
-        <h5>y_position:{{200-y}}, x_position {{x}}</h5>
-        <h5>y_velocity: {{-1*dy}}, x_velocity {{dx}}</h5>
+        <h5>y_position:{{py}}, x_position {{px}}</h5>
+        <h5>y_velocity: {{dy}}, x_velocity {{dx}}</h5>
         <h5>y_acceleration: {{ddy}}, x_acceleration {{ddx}}</h5>
       </div>
     </div>
@@ -39,6 +39,32 @@ global.acorn = require('../../assets/js/acorn');
 const JSInterpreter = require('../../assets/js/interpreter');
 
 import Vue from 'vue'
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    px: 0,
+    py: 0,
+    dx: 0,
+    dy: 0,
+    ddx: 0,
+    ddy: 0,
+    maxTime: 0,
+    currentTime: 0
+  },
+  getters: {
+    getAttr: (state) => (attr) => {
+      return state[attr]
+    }
+
+  },
+  mutations: {
+    change (state, payload) {
+      state[payload.attr] = payload.amount
+    }
+  }
+})
 
 export default {
   name: 'app',
@@ -49,125 +75,83 @@ export default {
   data() {
     return {
       program: '',
-      ctx: null,
-      canvas: null,
-      x: 0,
-      y: 0,
-      ddy: 1,
-      ddx: 0,
-      dx: 5,
-      dy: 5,
-      timer: 0,
       max_time: 50,
-      timeout: null
+      timeout: null,
     }
   },
   methods: {
-
-    print_out() {
-      console.log('asdas')
-    },
-    drawGrid() {
-      this.ctx.moveTo(this.canvas.width/2, 0);
-      this.ctx.lineTo(this.canvas.width/2, this.canvas.height);
-      this.ctx.moveTo(0,this.canvas.height/2);
-      this.ctx.lineTo(this.canvas.width, this.canvas.height/2);
-      this.ctx.strokeStyle = "black";
-      this.ctx.stroke();
-    },
-    drawBall() {
-      this.ctx.beginPath();
-      this.ctx.fillStyle="#0000ff";
-      // Draws a circle of radius 20 at the coordinates 100,100 on the canvas
-      this.ctx.arc(this.x,this.y,20,0,Math.PI*2,true);
-      this.ctx.closePath();
-      this.ctx.fill();
-    },
-    draw() {
-      // console.log(this.inner_loop_content)
-      this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height)
-      this.drawGrid();
-      // if(this.y + this.dy > this.canvas.height-20 || this.y + this.dy < 20) {
-      //   this.ddy = 0
-      //   this.dy = 0
-      // }
-      if (this.timer > this.max_time*10 - 2) {
-        console.log(this.timer)
-        console.log(this.max_time*10 - 2)
-        clearTimeout(this.timeout)
-      }
-      this.timer += 1
-      console.log(this.timeout)
-      // this.dy += this.ddy;
-      // this.dx += this.ddx;
-      // this.y+=this.dy;
-      // this.x+=this.dx
-    },
     initFunc: function(interpreter, globalObject) {
-      var draw = function() {
-        Vue.prototype.$ctx.clearRect(0,0, Vue.prototype.$canvas.width, Vue.prototype.$canvas.height)
+
+      function initInterpreterWaitForSeconds(interpreter, scope) {
+        var wrapper = interpreter.createAsyncFunction(
+          function(timeInSeconds, callback) {
+            // Delay the call to the callback.
+            setTimeout(callback, timeInSeconds * 1000);
+          });
+        interpreter.setProperty(scope, 'waitForSeconds', wrapper);
+      }
+
+      var drawBall = function() {
         Vue.prototype.$ctx.beginPath();
         Vue.prototype.$ctx.fillStyle="#0000ff";
-        // Draws a circle of radius 20 at the coordinates 100,100 on the canvas
-        Vue.prototype.$ctx.arc(0,0,20,0,Math.PI*2,true);
+        Vue.prototype.$ctx.arc(store.state.px+Vue.prototype.$canvas.width/2, (-1)*store.state.py+Vue.prototype.$canvas.height/2, 20, 0, Math.PI*2, true);
         Vue.prototype.$ctx.closePath();
         Vue.prototype.$ctx.fill();
-        Vue.prototype.$timee += 1
-        // this.drawGrid();
-        // // if(this.y + this.dy > this.canvas.height-20 || this.y + this.dy < 20) {
-        // //   this.ddy = 0
-        // //   this.dy = 0
-        // // }
-        // if (this.timer > this.max_time*10 - 2) {
-        //   console.log(this.timer)
-        //   console.log(this.max_time*10 - 2)
-        //   clearTimeout(this.timeout)
-        // }
-        // this.timer += 1
-        // console.log(this.timeout)
+      }
+
+      var drawGrid = function() {
+        Vue.prototype.$ctx.moveTo(Vue.prototype.$canvas.width/2, 0);
+        Vue.prototype.$ctx.lineTo(Vue.prototype.$canvas.width/2, Vue.prototype.$canvas.height);
+        Vue.prototype.$ctx.moveTo(0,Vue.prototype.$canvas.height/2);
+        Vue.prototype.$ctx.lineTo(Vue.prototype.$canvas.width, Vue.prototype.$canvas.height/2);
+        Vue.prototype.$ctx.strokeStyle = "black";
+        Vue.prototype.$ctx.stroke();
+      }
+
+      var draw = function() {
+        Vue.prototype.$ctx.clearRect(0,0, Vue.prototype.$canvas.width, Vue.prototype.$canvas.height)
+        drawGrid();
+        drawBall();
+        
       }
 
       var drawWrapper = function() {
-        // setInterval(draw(), 200);
-        // console.log("out")
         draw()
       };
+
       interpreter.setProperty(globalObject, 'draw',
           interpreter.createNativeFunction(drawWrapper));
+
+      initInterpreterWaitForSeconds(interpreter, globalObject);
+
+      var vueSetWrapper = function(attr, set_value) {
+        store.commit({type: 'change', attr: attr, amount: set_value})
+      };
+
+      interpreter.setProperty(globalObject, 'vueSet',
+          interpreter.createNativeFunction(vueSetWrapper));
+
+      var vueGetWrapper = function(attr) {
+        return store.getters.getAttr(attr)
+      };
+
+      interpreter.setProperty(globalObject, 'vueGet',
+          interpreter.createNativeFunction(vueGetWrapper));
+
     },
     evalCode() {
       clearTimeout(this.timeout)
       this.program = BlocklyJS.workspaceToCode(this.$refs["bounce"].workspace);
       console.log(this.program)
-      this.timer = Vue.prototype.$timee
-      Vue.prototype.$timee += 1
-      // this.x = this.canvas.width/2
-      // this.y = this.canvas.height/2
-      // // this.ddy = 1
-      // // this.ddx = 0
-      // // this.dx = 3
-      // // this.dy = -20
-      // this.timer = 0
-      // // var self = this;
-      // var myInterpreter = new JSInterpreter.Interpreter(this.code, this.initFunc);
-      // var runToCompletion = function() {
-      //   if (myInterpreter.step()) {
-      //     // Ran until an async call.  Give this call a chance to run.
-      //     // Then start running again later.
-      //     setTimeout(runToCompletion, 2);
-      //   }
-      // };
-      // runToCompletion();
 
-      // And then show generated code in an alert.
-      // In a timeout to allow the outputArea.value to reset first.
       var program = this.program
       var runner = null
+
       // Begin execution
       var myInterpreter = new JSInterpreter.Interpreter(program, this.initFunc);
       runner = function() {
         if (myInterpreter) {
-          var hasMore = myInterpreter.run();
+          var hasMore = myInterpreter.run(this);
           if (hasMore) {
             // Execution is currently blocked by some async call.
             // Try again later.
@@ -184,12 +168,34 @@ export default {
   },
   mounted: function() {
     this.canvas = document.getElementById("myCanvas");
-    this.ctx = this.canvas.getContext('2d');
     Vue.prototype.$canvas = document.getElementById("myCanvas");
     Vue.prototype.$ctx = this.canvas.getContext('2d');
-    Vue.prototype.$timee = 0
-    this.x = this.canvas.width/2;
-    this.y = this.canvas.height/2;
+  },
+  computed: {
+    px () {
+      return store.state.px
+    },
+    py () {
+      return store.state.py
+    },
+    dx () {
+      return store.state.dx
+    },
+    dy () {
+      return store.state.dy
+    },
+    ddx () {
+      return store.state.ddx
+    },
+    ddy () {
+      return store.state.ddy
+    },
+    maxTime () {
+      return store.state.maxTime
+    },
+    currentTime () {
+      return store.state.currentTime
+    }
   }
 }
 </script>
