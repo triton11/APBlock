@@ -4,6 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import One from './components/instructions/One.vue'
 import Home from './components/Home.vue'
+import Chatbot from './components/spanish/chatbot.vue'
 import BallBounce from './components/physics/ball_bounce.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -40,6 +41,12 @@ const router = new Router({
      component: BallBounce,
      props:true,
     },
+    {
+     path: '/spanish/chatbot',
+     name:'chatbot',
+     component: Chatbot,
+     props:true,
+    }
  ]
 })
 

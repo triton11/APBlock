@@ -20,6 +20,13 @@
               </router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
+          <b-nav-item-dropdown text="spanish">
+            <b-dropdown-item>
+              <router-link :to="{ path: '/spanish/chatbot' }">
+                Chatbot
+              </router-link>
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-navbar>
       <div id="main">
