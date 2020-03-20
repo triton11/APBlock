@@ -18,6 +18,7 @@ Blockly.Blocks['set_variable'] = {
             .appendField("to")
         this.appendValueInput("my_value")
             .setCheck("Number");
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(330);
@@ -31,6 +32,40 @@ Blockly.JavaScript['set_variable'] = function(block) {
   var code = `vueSet('${dropdown_my_variable}', ${value_my_value});`;
   return code;
 };
+
+Blockly.Blocks['change_variable'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("change")
+            .appendField(new Blockly.FieldDropdown(
+                [
+                    ["x acceleration","ddx"], 
+                    ["y acceleration","ddy"], 
+                    ["x velocity","dx"],
+                    ["y velocity","dy"],
+                    ["x position","px"],
+                    ["y position","py"],
+                    ["timer","maxTime"]
+                ]
+            ), "my_variable")
+            .appendField("by")
+        this.appendValueInput("my_value")
+            .setCheck("Number");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(330);
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.JavaScript['change_variable'] = function(block) {
+  var dropdown_my_variable = block.getFieldValue('my_variable');
+  var value_my_value = Blockly.JavaScript.valueToCode(block, 'my_value', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `vueSet('${dropdown_my_variable}', (vueGet('${dropdown_my_variable}') + ${value_my_value}));`;
+  return code;
+};
+
 
 Blockly.Blocks['get_variable'] = {
   init: function() {

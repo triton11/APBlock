@@ -21,6 +21,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const router = new Router({
+ mode: 'history'
  routes: [
     {
      path: '/',
