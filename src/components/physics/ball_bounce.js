@@ -66,7 +66,6 @@ Blockly.JavaScript['change_variable'] = function(block) {
   return code;
 };
 
-
 Blockly.Blocks['get_variable'] = {
   init: function() {
     this.appendDummyInput()

@@ -27,6 +27,13 @@
               </router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
+          <b-nav-item-dropdown text="biology">
+            <b-dropdown-item>
+              <router-link :to="{ path: '/biology/viral' }">
+                Gone Viral
+              </router-link>
+            </b-dropdown-item>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-navbar>
       <div id="main">

@@ -4,6 +4,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import App from './App.vue'
 import One from './components/instructions/One.vue'
 import Home from './components/Home.vue'
+import GoneViral from './components/biology/gone_viral.vue'
 import Chatbot from './components/spanish/chatbot.vue'
 import BallBounce from './components/physics/ball_bounce.vue'
 
@@ -28,6 +29,12 @@ const router = new Router({
      path: '/',
      name:'home',
      component: Home
+    },
+    {
+     path: '/biology/viral',
+     name:'viral',
+     component: GoneViral,
+     props:true,
     },
     {
       path: '/instructions',
