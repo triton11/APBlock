@@ -28,7 +28,7 @@
     <div class="row">
       <div class="col-12">
         <b-tabs pills card vertical>
-          <b-tab title="Lab One" active>
+          <b-tab title="Part One" active>
             <div align="left">
               <b>Setting Up</b>
               <br>
@@ -48,7 +48,7 @@
               </ol>
             </div>
           </b-tab>
-          <b-tab title="Lab Two">
+          <b-tab title="Part Two">
             <div align="left">
               <b>Velocity and Position</b>
               <br>
@@ -68,7 +68,7 @@
               </ol>
             </div>
           </b-tab>
-          <b-tab title="Lab Three">
+          <b-tab title="Part Three">
             <div align="left">
               <b>Acceleration</b>
               <br>
@@ -88,7 +88,7 @@
               </ol>
             </div>
           </b-tab>
-          <b-tab title="Lab Four">
+          <b-tab title="Part Four">
             <div align="left">
               <b>Programming</b>
               <br>
@@ -279,7 +279,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -291,11 +291,6 @@ html, body {
 }
 
 #blockly1 {
-  position: relative;
-  width: 100%;
-  height: 500px;
-}
-#blockly2 {
   position: relative;
   width: 100%;
   height: 500px;

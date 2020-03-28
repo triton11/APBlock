@@ -22,7 +22,7 @@ Blockly.Blocks['set_name'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set name to")
-        .appendField(new Blockly.FieldTextInput("default"), "NAME");
+        .appendField(new Blockly.FieldTextInput("You"), "NAME");
     this.setPreviousStatement(true, null);
     this.setColour(160);
  this.setTooltip("Use this to set the page greeting");

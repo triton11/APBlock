@@ -81,7 +81,7 @@ Blockly.Blocks['get_variable'] = {
             ]
         ), "my_variable");
     this.setOutput(true, null);
-    this.setColour(330);
+    this.setColour(230);
  this.setHelpUrl("");
   }
 };

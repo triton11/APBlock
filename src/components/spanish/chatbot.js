@@ -106,20 +106,19 @@ Blockly.JavaScript['pregunta'] = function(block) {
 Blockly.Blocks['contiene'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("contiene");
-    this.appendValueInput("contiene")
-        .setCheck("String");
+        .appendField("contiene")
+        .appendField(new Blockly.FieldTextInput(""), "contiene_input")
     this.setInputsInline(true);
     this.setOutput(true, null);
-    this.setColour(330);
+    this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
 Blockly.JavaScript['contiene'] = function(block) {
-  var value_contains = Blockly.JavaScript.valueToCode(block, 'contiene', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `checkContains(${value_contains})`;
+  var value_contains = block.getFieldValue('contiene_input');
+  var code = `checkContains('${value_contains}')`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

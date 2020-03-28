@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Instructions</h1>
+    <h1>Playground</h1>
     <BlocklyComponent id="blockly1" ref="foo">
       <block type="controls_ifelse"></block>
       <block type="logic_compare"></block>
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     print_out() {
-      console.log('asdas')
+      console.log(this.code)
     },
     evalCode() {
       // function print_out(stuff) {

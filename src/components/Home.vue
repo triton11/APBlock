@@ -9,10 +9,38 @@
           <block type="set_name"></block>
         </BlocklyComponent>
       </div>
-      <div>
+      <div class="col-4" align="center">
         <p id="code">
           <b-button size="lg" variant="primary" v-on:click="evalCode()">Run Code</b-button>
         </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h2>Instructions</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-10 offset-1">
+        <ol align="left">
+          <li>
+            Each lab has a "block library" on the left where all the blocks for the lab are stored. You can use any block multiple times!
+          </li>
+          <br>
+          <li>
+            Directly to the right of the "block library" is the "workspace". Drag blocks here and connect them like puzzle pieces to make stacks of code! The code is always read in order from top to bottom, and gets run whenever the lab's "run code" button is pressed (this button may look different depending on the lab).
+          </li>
+          <br>
+          <li>
+            Try it out! Drag over the "set greeting to ..." and "set name to ..." blocks from the block library into the workspace and press run code!
+          </li>
+          <br>
+          <li>
+            The lab instructions can be found at the bottom of the lab. Each lab has multiple sections. Please follow each lab instructions in order, and if you run into any bugs or problems send me an email (tristrumtuttle@gmail.com)
+          </li>
+        </ol>
       </div>
     </div>
   </div>
@@ -67,7 +95,7 @@ html, body {
 #blockly1 {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 300px;
 }
 #blockly2 {
   position: relative;

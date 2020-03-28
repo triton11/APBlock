@@ -90,7 +90,7 @@ Blockly.Blocks['repeat_person'] = {
 
 Blockly.JavaScript['repeat_person'] = function(block) {
   var statements_loop_content = Blockly.JavaScript.statementToCode(block, 'loop_content');
-  var code = `for (var j = 0; j < 80; j++) { ${statements_loop_content} waitForMilliseconds(10); } updateSick();`
+  var code = `for (var j = 0; j < 80; j++) { vueSet('currentPerson', j); ${statements_loop_content} waitForMilliseconds(20); } vueSet('currentPerson', undefined); updateSick();`
   return code;
 };
 
@@ -119,9 +119,16 @@ Blockly.JavaScript['meet_people'] = function(block) {
 Blockly.Blocks['if_person'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("if person");
-    this.appendValueInput("condition")
-        .setCheck("Boolean");
+        .appendField("if person age")
+        .appendField(new Blockly.FieldDropdown(
+                [
+                    ["<","less"],
+                    ["=","equal"], 
+                    [">","greater"]
+                ]
+            ), "my_variable");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "number_test");
     this.appendStatementInput("then_do")
         .setCheck(null);
     this.setInputsInline(true);
@@ -134,10 +141,18 @@ Blockly.Blocks['if_person'] = {
 };
 
 Blockly.JavaScript['if_person'] = function(block) {
-  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_number = block.getFieldValue('number_test');
+  var value_comparison = block.getFieldValue('my_variable');
+
   var statements_then_do = Blockly.JavaScript.statementToCode(block, 'then_do');
   // TODO: Assemble JavaScript into code variable.
-  var code = `if (${value_condition}) { ${statements_then_do} };\n`;
+  var code = `if (j < ${value_number}) { ${statements_then_do} };\n`;
+  if (value_comparison == 'equal') {
+    code = `if (j === ${value_number}) { ${statements_then_do} };\n`;
+  }
+  if (value_comparison == 'greater') {
+    code = `if (j > ${value_number}) { ${statements_then_do} };\n`;
+  }
   return code;
 };
 
@@ -162,3 +177,24 @@ Blockly.JavaScript['get_person_attribute'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.Blocks['set_immunity'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("set transmission rate to")
+        .appendField(new Blockly.FieldNumber(0), "immunity")
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(160);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['set_immunity'] = function(block) {
+  var value_immunity = block.getFieldValue('immunity');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `vueSet('immunity', ${value_immunity});`;
+  return code;
+};

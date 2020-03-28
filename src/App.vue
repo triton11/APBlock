@@ -8,26 +8,26 @@
               Home
             </router-link>
           </b-nav-item>
-          <b-nav-item>
+<!--           <b-nav-item>
             <router-link :to="{ path: '/instructions' }">
               Instructions
             </router-link>
-          </b-nav-item>
-          <b-nav-item-dropdown text="physics">
+          </b-nav-item> -->
+          <b-nav-item-dropdown text="Physics">
             <b-dropdown-item>
               <router-link :to="{ path: '/physics/ball_bounce' }">
                 Ball Bounce
               </router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-item-dropdown text="spanish">
+          <b-nav-item-dropdown text="Spanish">
             <b-dropdown-item>
               <router-link :to="{ path: '/spanish/chatbot' }">
                 Chatbot
               </router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-item-dropdown text="biology">
+          <b-nav-item-dropdown text="Biology">
             <b-dropdown-item>
               <router-link :to="{ path: '/biology/viral' }">
                 Gone Viral
