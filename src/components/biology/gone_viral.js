@@ -52,7 +52,7 @@ Blockly.Blocks['random_infect'] = {
 
 Blockly.JavaScript['random_infect'] = function(block) {
   block
-  var code = 'randomInfect();';
+  var code = 'randomInfect(); draw();';
   return code;
 };
 
@@ -71,7 +71,7 @@ Blockly.Blocks['repeat_days'] = {
 
 Blockly.JavaScript['repeat_days'] = function(block) {
   var statements_loop_content = Blockly.JavaScript.statementToCode(block, 'loop_content');
-  var code = `for (var i = 1; i <= vueGet('maxDays'); i++) { ${statements_loop_content} vueSet('currentDay', i); waitForMilliseconds(1000); }`
+  var code = `draw(); for (var i = 1; i <= vueGet('maxDays'); i++) { waitForMilliseconds(1000); ${statements_loop_content} vueSet('currentDay', i); draw(); }`
   return code;
 };
 
@@ -90,7 +90,7 @@ Blockly.Blocks['repeat_person'] = {
 
 Blockly.JavaScript['repeat_person'] = function(block) {
   var statements_loop_content = Blockly.JavaScript.statementToCode(block, 'loop_content');
-  var code = `for (var j = 0; j < 80; j++) { vueSet('currentPerson', j); ${statements_loop_content} waitForMilliseconds(20); } vueSet('currentPerson', undefined); updateSick();`
+  var code = `draw(); for (var j = 0; j < 80; j++) { waitForMilliseconds(20); vueSet('currentPerson', j); ${statements_loop_content} draw(); } vueSet('currentPerson', undefined); updateSick(); draw();`
   return code;
 };
 

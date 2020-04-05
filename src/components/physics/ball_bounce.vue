@@ -7,7 +7,7 @@
           <block type="set_variable"></block>
           <block type="change_variable"></block>
           <block type="get_variable"></block>
-          <block type="draw_ball"></block>
+          <!-- <block type="draw_ball"></block> -->
           <block type="repeat_timer"></block>
           <block type="math_arithmetic"></block>
           <block type="math_number"></block>
@@ -27,83 +27,122 @@
     </p>
     <div class="row">
       <div class="col-12">
-        <b-tabs pills card vertical>
-          <b-tab title="Part One" active>
-            <div align="left">
-              <b>Setting Up</b>
+        <b-tabs fill>
+          <LabTab
+            labTitle="1. Setting Up"
+            labKey="setup"
+            hintText="Use these blocks"
+            imgSource="setup.png"
+            imgHeight="50"
+            imgWidth="150"
+          >
+            <p>
+              Can you set the timer to 10 using the pink "set ... to" block and the blue number block? Check by pressing "Run Code" and see if the Timer in the top right corner gets set to 10.
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="2. Looping"
+            labKey="loop"
+            hintText="Use these blocks"
+            imgSource="loop.png"
+            imgHeight="120"
+            imgWidth="200"
+          >
+            <p>
+              The "do every second" block will run any blocks inside of it, in order, once every second until the timer runs out. Drag over an "every second do" block and press "Run Code". You should see the time elapsed go up every second.
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="3. Change position"
+            labKey="position"
+            hintText="Use these blocks"
+            imgSource="changepos.png"
+            imgHeight="130"
+            imgWidth="250"
+          >
+            <p>
+              We can use the "change ... by" block to change any of our variables. Lets add a change block inside our "do every second" loop, and use it to change the x_position by 10. Press "Run Code". Does the ball move across the x-axis of the graph? Each second, our loop is changing the x_position of the ball to be 10 more than it was previously.
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="4. Velocity"
+            labKey="velocity1"
+            hintText="Use these blocks"
+            imgSource="velocity.png"
+            imgHeight="50"
+            imgWidth="100"
+          >
+            <p>
+              To start, lets set position (both x and y) to <b>0</b> and velocity (both x and y) to <b>5</b>, and set the timer to <b>10</b>. This way, every time we run our code our ball will have the same starting position and velocity. 
               <br>
-              <ol>
-                <li> 
-                  Can you set the timer to 10 using the pink "set ... to" block and the blue number block? Check by pressing "Run Code" and see if the Timer in the top right corner gets set to 10.
-                </li>
-                <li>
-                  Next, we can use the "draw_ball" block to draw a ball and graph on the screen. You can connect this block to the bottom of the set timer block. Check by pressing "Run Code" and see if the blue ball is drawn on the right. 
-                </li>
-                <li>
-                  The "do every second" block will run any blocks inside of it, in order, once every second until the timer runs out. Drag over an "every second do" block, and move the "draw_ball" block from before to be inside it. Press "Run Code". You should see the time elapsed go up every second.
-                </li>
-                <li>
-                  Finally, we can use the "change ... by" block to change any of our variables. Lets add a change block inside our "do every second" loop, and use it to change the x_position by 10. Press "Run Code". Does the ball move across the x-axis of the graph? Each second, our loop is changing the x_position of the ball to be 10 more than it was previously.
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Two">
-            <div align="left">
-              <b>Velocity and Position</b>
               <br>
-              <ol>
-                <li> 
-                  To start, lets set position (both x and y) to <b>0</b> and velocity (both x and y) to <b>5</b>, and set the timer to <b>10</b>. This way, every time we run our code our ball will have the same starting position and velocity. 
-                </li>
-                <li>
-                  In physics, the change in position over time is known as the velocity. Make a "do every second" loop and add the "draw_ball" block. Instead of changing the x position by 10 like we did in the previous lab, lets use a "change ... by" block to change the x position by the x velocity (hint: use the pink block with a dropdown). Does the ball move faster or slower than before? What if you change the "set ... to" block from earlier to set the x velocity to 20?
-                </li>
-                <li>
-                  Balls don't just move left and right, they also move up and down. Add a second "change ... by" block to your loop to change the y position by the y velocity. What happens to your ball when you run the code? What happens if you change the y velocity to be negative? Can you think of a case in real life when a ball has a "negative" velocity?
-                </li>
-                <li>
-                  Challenge: You can use multiple "every second do" loops by stacking them one on top of the other. Can you make the ball move in a complete square (eg. first it moves right, then up, then left, then down) using the "change ... by" and "set ... to" blocks? 
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Three">
-            <div align="left">
-              <b>Acceleration</b>
+              In physics, the change in position over time is known as the velocity. Make a "do every second" loop, but instead of changing the x position by 10 like we did in the previous lab, lets use a "change ... by" block to change the x position by the x velocity (hint: use the pink block with a dropdown). Does the ball move faster or slower than before? What if you change the "set ... to" block from earlier to set the x velocity to 20?
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="4. More Velocity"
+            labKey="velocity2"
+            hintText="Use these blocks"
+            imgSource="velocity.png"
+            imgHeight="300"
+            imgWidth="300"
+          >
+            <p>
+              Balls don't just move left and right, they also move up and down. Add a second "change ... by" block to your loop to change the y position by the y velocity. What happens to your ball when you run the code? What happens if you change the y velocity to be negative? Can you think of a case in real life when a ball has a "negative" velocity?
               <br>
-              <ol>
-                <li> 
-                  To start, lets set position (both x and y) to <b>0</b> and velocity (both x and y) to <b>0</b>, and set the timer to <b>10</b>. Next, set the x and y acceleration to <b>2</b>.
-                </li>
-                <li>
-                  Acceleration is the change in velocity over time. Lets make our ball accelerate! Make a "do every second" loop, with a "change ... by" block to change x position by x velocity. Next add a "change ... by" block to change x velocity by x acceleration. What happens when you run the code? Does the ball move faster over time?
-                </li>
-                <li>
-                  In real life, one of the most common forms of acceleration is "acceleration due to gravity". When something is in free fall, it is constantly accelerating by 9.81 m/s. Lets try simulating a ball that has just been thrown straight up! To start, set the x velocity to 0 and set the x acceleration to 0, outside of your loop. Next, set the y velocity to 5 and the y acceleration (aka gravity) to -1, outside of your loop. Finally, add a "change ... by" block to your loop to change the y position by the y velocity, and another "change ... by" block to change the y velocity by the y acceleration. What happens when you run the code? Does the ball travel up, then fall down?
-                </li>
-                <li>
-                  Challenge: Imagine you are playing catch outside and you toss a ball! What initial values should the x/y velocities and x/y accelerations have? Why?
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Four">
-            <div align="left">
-              <b>Programming</b>
               <br>
-              <ol>
-                This code that we have assembled runs line by line. Try these interesting challenge problems:
-              
-                <li>
-                  The change by block can be replace entirely by a combination of other blocks. Make an "every second do" loop with a "change ... by" block that changes x position by x velocity. Can you re-write this loop without any "change ... by" blocks? Hint: You will need the "set ... by" and blue "... + ..." block.
-                </li>
-                <li>
-                  The order of "change ... by" blocks matters. Make a stack of two change blocks: change y position by y velocity and change y velocity by 10. What happens when you switch the order of these blocks? Why is it important that the change y position block come first?
-                </li>
-              </ol>
-            </div>
-          </b-tab>
+              Challenge: You can use multiple "every second do" loops by stacking them one on top of the other. Can you make the ball move in a complete square (eg. first it moves right, then up, then left, then down) using the "change ... by" and "set ... to" blocks? 
+            </p>
+          </LabTab>
+
+          <LabTab
+            labTitle="5. Acceleration"
+            labKey="acceleration1"
+            hintText="Use these blocks"
+            imgSource="acceleration.png"
+            imgHeight="360"
+            imgWidth="300"
+          >
+            <p>
+              To start, lets set position (both x and y) to <b>0</b> and velocity (both x and y) to <b>0</b>, and set the timer to <b>10</b>. Next, set the x and y acceleration to <b>2</b>.
+              <br>
+              <br>
+              Acceleration is the change in velocity over time. Lets make our ball accelerate! Make a "do every second" loop, with a "change ... by" block to change x position by x velocity. Next add a "change ... by" block to change x velocity by x acceleration. What happens when you run the code? Does the ball move faster over time?
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="6. More Acceleration"
+            labKey="acceleration2"
+            hintText="Use these blocks"
+            imgSource="acceleration.png"
+            imgHeight="360"
+            imgWidth="300"
+          >
+            <p>
+              In real life, one of the most common forms of acceleration is "acceleration due to gravity". When something is in free fall, it is constantly accelerating by 9.81 m/s. Lets try simulating a ball that has just been thrown straight up! To start, set the x velocity to 0 and set the x acceleration to 0, outside of your loop. Next, set the y velocity to 5 and the y acceleration (aka gravity) to -1, outside of your loop. Finally, add a "change ... by" block to your loop to change the y position by the y velocity, and another "change ... by" block to change the y velocity by the y acceleration. What happens when you run the code? Does the ball travel up, then fall down?
+              <br>
+              <br>
+              Challenge: Imagine you are playing catch outside and you toss a ball! What initial values should the x/y velocities and x/y accelerations have? Why?
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="7. Programming challenge"
+            labKey="challenge"
+            hintText="Its a challenge!"
+            imgSource="default.png"
+            imgHeight="100"
+            imgWidth="200"
+          >
+            <ol>
+              This code that we have assembled runs line by line. Try these interesting challenge problems:
+              <li>
+                The change by block can be replace entirely by a combination of other blocks. Make an "every second do" loop with a "change ... by" block that changes x position by x velocity. Can you re-write this loop without any "change ... by" blocks? Hint: You will need the "set ... by" and blue "... + ..." block.
+              </li>
+              <li>
+                The order of "change ... by" blocks matters. Make a stack of two change blocks: change y position by y velocity and change y velocity by 10. What happens when you switch the order of these blocks? Why is it important that the change y position block come first?
+              </li>
+            </ol>
+          </LabTab>
         </b-tabs>
       </div>
     </div>
@@ -113,6 +152,7 @@
 
 <script>
 import BlocklyComponent from '../BlocklyComponent.vue'
+import LabTab from '../instructions/LabTab.vue'
 
 import BlocklyJS from 'blockly/javascript';
 import './ball_bounce';
@@ -151,7 +191,8 @@ export default {
   name: 'app',
 
   components: {
-    BlocklyComponent
+    BlocklyComponent,
+    LabTab
   },
   data() {
     return {
@@ -221,7 +262,7 @@ export default {
     },
     evalCode() {
       clearTimeout(this.timeout)
-      this.program = BlocklyJS.workspaceToCode(this.$refs["bounce"].workspace);
+      this.program = 'draw();' + BlocklyJS.workspaceToCode(this.$refs["bounce"].workspace);
       console.log(this.program)
 
       var program = this.program

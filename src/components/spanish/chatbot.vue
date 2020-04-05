@@ -34,74 +34,127 @@
     <br>
     <div class="row">
       <div class="col-12">
-        <b-tabs pills card vertical>
-          <b-tab title="Part Uno" active>
-            <div align="left">
-              <b>Primero</b>
-              <br>
-              <ol>
-                <li>
-                  To start, lets make a simple chatbot that just responds with "hola!" by dragging over the 'dice' block into the workspace. Try typing a message and sending it by pressing the "Envie Mensaje". Does the bot respond with "hola"?
-                </li>
-                <li>
-                  Next, lets drag over a 'pregunta' block and connect it to the bottom of the 'dice' block. The bot should now always respond with "hola" and then ask you "que?".
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Dos">
-            <div align="left">
-              <b>Segundo</b>
-              <br>
-              <ol>
-                <li>
-                  Lets make our bot a little smarter. Drag over the "si ... entonces" block. This block lets us respond to messages that meet the conditions specified inside the block. We can use the `contiene ...` block to check if the sent message contains a phrase, and respond accordingly. Using the 'si ... entonces' block, the 'contiene ...' block, and the 'dice' block, make a bot that responds with "hola" only if the sent message contains "hola".
-                </li>
-                <li>
-                  Next lets try the 'si ... entonces ... si no ...' block. This block lets us respond in one way if the si condition is met, and another way in any other case. Lets use this block to make a bot that responds with "hola" only if the sent message contains "hola", and in any other case responds "que?".
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Tres">
-            <div align="left">
-              <b>Tercero</b>
-              <br>
-              <ol>
-                <li>
-                  We can use the '... y ...' as the condition in a 'si ... entonces' block with two 'contiene ...' blocks to respond only if the sent message contains two words. For example, with the code 'si contiene "gato" y contiene "perro" entonces dice "me gustan los dos"', your bot will respond to any message that contains "gato" and "perro". Go ahead and try it now, using any two words!
-                </li>
-                <li>
-                  We can use the '... o ...' as the condition in a 'si ... entonces' block with two 'contiene ...' blocks to respond only if the sent message contains either word. For example, with the code 'si contiene "verde" o contiene "rojo" entonces dice "mi color favorito"', your bot will respond to any message that contains "verde" or "rojo". Go ahead and try it now, using any two words! What happens if you use both the words in a message?
-                </li>
-                <li>
-                  The 'no ...' block used with the 'contiene ...' block lets us respond to messages that do not contain certain words. Using the same strategy as before, can you make a bot that responds with "odio las papas" to everything except a message that contains "papas". 
-                </li>
-              </ol>
-            </div>
-          </b-tab>
-          <b-tab title="Part Cuatro">
-            <div align="left">
-              <b>Finalmente</b>
-              <br>
-              <ol>
-                <li>
-                  Desafío: You can use multiple 'si ... entonces' blocks to make a really complicated bot. Can you make a bot that can respond to multiple different messages? How realistic a bot can you make?
-                </li>
-                <li>
-                  Desafío: You can nest the different logic blocks ("y", "o", and "no") to respond to more conditions. How would you make a 'si ... entonces' block that only responds if a message is sent that doesn't contain "país", OR contains "ciudad" and "pueblo"?
-                </li>
-              </ol>
-            </div>
-          </b-tab>
+        <b-tabs fill>
+          <LabTab
+            labTitle="Análisis Uno"
+            labKey="uno"
+            hintText="Use these blocks"
+            imgSource="dice.png"
+            imgHeight="50"
+            imgWidth="100"
+          >
+            <p>
+              To start, lets make a simple chatbot that just responds with "hola!" by dragging over the 'dice' block into the workspace. Try typing a message and sending it by pressing the "Envie Mensaje". Does the bot respond with "hola"?
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="Análisis Dos"
+            labKey="dos"
+            hintText="Use these blocks"
+            imgSource="pregunta.png"
+            imgHeight="50"
+            imgWidth="140"
+          >
+            <p>
+              Next, lets drag over a 'pregunta' block and connect it to the bottom of the 'dice' block. The bot should now always respond with "hola" and then ask you "que?".
+            </p>
+          </LabTab>
+          
+          <LabTab
+            labTitle="Análisis Tres"
+            labKey="tres"
+            hintText="Use these blocks"
+            imgSource="si.png"
+            imgHeight="100"
+            imgWidth="200"
+          >
+            <p>
+              Lets make our bot a little smarter. Drag over the "si ... entonces" block. This block lets us respond to messages that meet the conditions specified inside the block. We can use the `contiene ...` block to check if the sent message contains a phrase, and respond accordingly. Using the 'si ... entonces' block, the 'contiene ...' block, and the 'dice' block, make a bot that responds with "hola" only if the sent message contains "hola".
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="Análisis Cuatro"
+            labKey="cuatro"
+            hintText="Use these blocks"
+            imgSource="sino.png"
+            imgHeight="150"
+            imgWidth="200"
+          >
+            <p>
+              Next lets try the 'si ... entonces ... si no ...' block. This block lets us respond in one way if the si condition is met, and another way in any other case. Lets use this block to make a bot that responds with "hola" only if the sent message contains "hola", and in any other case responds "que?".
+            </p>
+          </LabTab>
+          
+          <LabTab
+            labTitle="Análisis Cinco"
+            labKey="cinco"
+            hintText="Use these blocks"
+            imgSource="y.png"
+            imgHeight="100"
+            imgWidth="320"
+          >
+            <p>
+              We can use the '... y ...' as the condition in a 'si ... entonces' block with two 'contiene ...' blocks to respond only if the sent message contains two words. For example, with the code 'si contiene "gato" y contiene "perro" entonces dice "me gustan los dos"', your bot will respond to any message that contains "gato" and "perro". Go ahead and try it now, using any two words!
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="Análisis Seis"
+            labKey="siete"
+            hintText="Use these blocks"
+            imgSource="o.png"
+            imgHeight="100"
+            imgWidth="320"
+          >
+            <p>
+              We can use the '... o ...' as the condition in a 'si ... entonces' block with two 'contiene ...' blocks to respond only if the sent message contains either word. For example, with the code 'si contiene "verde" o contiene "rojo" entonces dice "mi color favorito"', your bot will respond to any message that contains "verde" or "rojo". Go ahead and try it now, using any two words! What happens if you use both the words in a message? 
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="Análisis Siete"
+            labKey="siete"
+            hintText="Use these blocks"
+            imgSource="no.png"
+            imgHeight="100"
+            imgWidth="250"
+          >
+            <p>
+              The 'no ...' block used with the 'contiene ...' block lets us respond to messages that do not contain certain words. Using the same strategy as before, can you make a bot that responds with "odio las papas" to everything except a message that contains "papas". 
+            </p>
+          </LabTab>
+          
+          <LabTab
+            labTitle="Análisis Ocho"
+            labKey="challenge1"
+            hintText="It's a challenge!"
+            imgSource="default.png"
+            imgHeight="100"
+            imgWidth="250"
+          >
+            <p>
+              Desafío: You can use multiple 'si ... entonces' blocks to make a really complicated bot. Can you make a bot that can respond to multiple different messages? How realistic a bot can you make?
+            </p>
+          </LabTab>
+          <LabTab
+            labTitle="Análisis Nueve"
+            labKey="challenge2"
+            hintText="It's a challenge!"
+            imgSource="default.png"
+            imgHeight="100"
+            imgWidth="250"
+          >
+            <p>
+              Desafío: You can nest the different logic blocks ("y", "o", and "no") to respond to more conditions. How would you make a 'si ... entonces' block that only responds if a message is sent that doesn't contain "país", OR contains "ciudad" and "pueblo"?
+            </p>
+          </LabTab>
         </b-tabs>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import BlocklyComponent from '../BlocklyComponent.vue'
-
+import LabTab from '../instructions/LabTab.vue'
 import BlocklyJS from 'blockly/javascript';
 import './chatbot';
 global.acorn = require('../../assets/js/acorn');
@@ -134,7 +187,8 @@ const store = new Vuex.Store({
 export default {
   name: 'app',
   components: {
-    BlocklyComponent
+    BlocklyComponent,
+    LabTab
   },
   data(){
     return {
@@ -179,7 +233,6 @@ export default {
       console.log(this.program)
       store.commit('addMessage', {sender:'you', text: this.message})
       this.message = ''
-
       var program = this.program
       var runner = null
 

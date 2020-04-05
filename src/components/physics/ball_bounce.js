@@ -126,7 +126,7 @@ Blockly.Blocks['repeat_timer'] = {
 
 Blockly.JavaScript['repeat_timer'] = function(block) {
   var statements_loop_content = Blockly.JavaScript.statementToCode(block, 'loop_content');
-  var code = `for (var i = 0; i <= vueGet('maxTime'); i++) { ${statements_loop_content} vueSet('currentTime', i); waitForSeconds(1); }`
+  var code = `draw(); for (var i = 1; i <= vueGet('maxTime'); i++) { waitForSeconds(1); ${statements_loop_content} vueSet('currentTime', i); draw(); }`
   return code;
 };
 
