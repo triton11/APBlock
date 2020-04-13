@@ -52,27 +52,11 @@
           <b-tab title="5. Send me feedback :)">
             <div class="container" align="left">
               <br>
-              If you run into any bugs or problems, or have suggestions, send me an email (tristrumtuttle@gmail.com)
+              If you run into any bugs or problems, or have suggestions, please fill out <a href="https://forms.gle/CGvu5aFE7Y4UD7LAA">this feedback form</a>.
             </div>
           </b-tab>
         </b-tabs>
-        <!-- <ol align="left">
-          <li>
-            Each lab has a "block library" on the left where all the blocks for the lab are stored. You can use any block multiple times!
-          </li>
-          <br>
-          <li>
-            Directly to the right of the "block library" is the "workspace". Drag blocks here and connect them like puzzle pieces to make stacks of code! The code is always read in order from top to bottom, and gets run whenever the lab's "run code" button is pressed (this button may look different depending on the lab).
-          </li>
-          <br>
-          <li>
-            Try it out! Drag over the "set greeting to ..." and "set name to ..." blocks from the block library into the workspace and press run code!
-          </li>
-          <br>
-          <li>
-            The lab instructions can be found at the bottom of the lab. Each lab has multiple sections. Please follow each lab instructions in order, and if you run into any bugs or problems send me an email (tristrumtuttle@gmail.com)
-          </li>
-        </ol> -->
+        
       </div>
     </div>
   </div>

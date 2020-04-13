@@ -69,8 +69,8 @@
             labKey="velocity1"
             hintText="Use these blocks"
             imgSource="velocity.png"
-            imgHeight="50"
-            imgWidth="100"
+            imgHeight="300"
+            imgWidth="300"
           >
             <p>
               To start, lets set position (both x and y) to <b>0</b> and velocity (both x and y) to <b>5</b>, and set the timer to <b>10</b>. This way, every time we run our code our ball will have the same starting position and velocity. 
