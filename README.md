@@ -1,4 +1,11 @@
-# AP block
+<div align="center">
+<h1>AP Block</h1>
+<p>A collection of online, interactive labs that utilize a block-based program to enhance learning across many subjects.<br>
+Try it out here! <a href="https://www.apblock.education">apblock.education</a>
+</p>
+</div>
+
+![check it out!](src/assets/images/gitpic.png)
 
 ## Contributing
 
