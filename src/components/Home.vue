@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome to AP Block</h1>
+    <h1>Welcome to Block Lessons!</h1>
     <h2> {{greeting}}, {{name}} </h2>
     <div class="row">
       <div class="col-8">
@@ -52,7 +52,7 @@
           <b-tab title="5. Send me feedback :)">
             <div class="container" align="left">
               <br>
-              If you run into any bugs or problems, or have suggestions, please fill out <a href="https://forms.gle/CGvu5aFE7Y4UD7LAA">this feedback form</a>. Do you have an idea for a specific lab? Send it to me using <a href="https://forms.gle/tC97pvWrfGy9L4zbA">this contribution form</a>. Finally, are you a programmer? Check out <a href="https://github.com/triton11/APBlock">AP Block on Github</a> and contribute code directly!
+              If you run into any bugs or problems, or have suggestions, please fill out <a href="https://forms.gle/CGvu5aFE7Y4UD7LAA">this feedback form</a>. Do you have an idea for a specific lab? Send it to me using <a href="https://forms.gle/tC97pvWrfGy9L4zbA">this contribution form</a>. Finally, are you a programmer? Check out <a href="https://github.com/triton11/APBlock">Block Lessons on Github</a> and contribute code directly!
             </div>
           </b-tab>
         </b-tabs>
