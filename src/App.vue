@@ -23,6 +23,11 @@
               Gone Viral
             </router-link>
           </b-nav-item-dropdown>
+          <b-nav-item-dropdown text="Art">
+            <router-link :to="{ path: '/art/random_dots' }" tag="b-dropdown-item">
+              Programming with Pointilism
+            </router-link>
+          </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-navbar>
       <div id="main">

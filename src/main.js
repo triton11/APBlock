@@ -7,6 +7,8 @@ import Home from './components/Home.vue'
 import GoneViral from './components/biology/gone_viral.vue'
 import Chatbot from './components/spanish/chatbot.vue'
 import BallBounce from './components/physics/ball_bounce.vue'
+import RandomDots from './components/art/random_dots.vue'
+
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -52,6 +54,12 @@ const router = new Router({
      path: '/spanish/chatbot',
      name:'chatbot',
      component: Chatbot,
+     props:true,
+    },
+    {
+     path: '/art/random_dots',
+     name:'random_dots',
+     component: RandomDots,
      props:true,
     }
  ]
